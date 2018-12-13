@@ -22,4 +22,5 @@ This plugin allows to specify `swift demangle` command's options.
 
 ```vim
 let g:swift_demangle#options = ['-compact', '-no-sugar']
+let g:swift_demangle#swift_path = expand('$HOME/local/bin/swift')
 ```

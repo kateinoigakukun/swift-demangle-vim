@@ -9,12 +9,13 @@ endfunction
 
 function! swift_demangle#demangle(mandled_name)
     let l:options = swift_demangle#get_options()
-    let l:cmd = swift_demangle#demangle_command(a:mandled_name, l:options)
+    let l:swift_path = get(g:, 'swift_demangle#swift_path', '')
+    let l:cmd = swift_demangle#demangle_command(l:swift_path, a:mandled_name, l:options)
     return system(l:cmd)
 endfunction
 
-function! swift_demangle#demangle_command(mandled_name, options)
-    let l:cmd = ['swift', 'demangle', a:mandled_name]
+function! swift_demangle#demangle_command(swift_path, mandled_name, options)
+    let l:cmd = [a:swift_path, 'demangle', a:mandled_name]
     call extend(l:cmd, a:options)
     return l:cmd
 endfunction
