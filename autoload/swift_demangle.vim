@@ -11,7 +11,7 @@ function! swift_demangle#demangle(mandled_name)
     let l:options = swift_demangle#get_options()
     let l:swift_path = get(g:, 'swift_demangle#swift_path', '')
     let l:cmd = swift_demangle#demangle_command(l:swift_path, a:mandled_name, l:options)
-    return system(l:cmd)
+    return system(join(l:cmd, " "))
 endfunction
 
 function! swift_demangle#demangle_command(swift_path, mandled_name, options)
